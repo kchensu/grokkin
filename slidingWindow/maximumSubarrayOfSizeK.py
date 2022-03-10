@@ -11,6 +11,19 @@ def maximumSubarrayOfSizeK(a, k):
     return maxSum
 
 
+def maxSub(a, k):
+
+    maxSum = sum(a[:k])
+    l = 0
+    currSum = maxSum
+    for r in range(k, len(a)):
+        currSum = currSum + a[r] - a[l]
+        maxSum = max(currSum, maxSum)
+        l += 1
+    return maxSum
+
+
 a = [2, 1, 5, 1, 3, 2]
 k = 3
-print(maximumSubarrayOfSizeK(a, k))
+# print(maximumSubarrayOfSizeK(a, k))
+print(maxSub(a, k))
