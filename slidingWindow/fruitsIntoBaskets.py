@@ -17,4 +17,6 @@ def fruitsIntoBaskets(a):
 
 
 a = ['A', 'B', 'C', 'A', 'C']
+b = ['A', 'B', 'C', 'B', 'B', 'C']
 print(fruitsIntoBaskets(a))
+print(fruitsIntoBaskets(b))
