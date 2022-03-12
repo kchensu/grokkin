@@ -1,13 +1,14 @@
 def longestSubstringWithSameLettersReplacement(s, k):
     maxLength = 0
     l = 0
-    chars = {}
-    for r in range(len(s)):
-        if s[r] not in chars:
-            chars[s[r]] = 0
-        chars[s[r]] += 1
-        while (r - l + 1) - max(chars.values()) > k:
-            chars[s[l]] -= 1
+    frequency = {}
+    for r, char in enumerate(s):
+        if char not in frequency:
+            frequency[char] = 0
+        frequency[char] += 1
+
+        while (r - l + 1 - max(frequency.values())) > k:
+            frequency[s[l]] -= 1
             l += 1
         maxLength = max(maxLength, r - l + 1)
     return maxLength
