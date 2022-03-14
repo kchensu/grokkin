@@ -1,3 +1,6 @@
+import string
+
+
 def permutationInAString(s1, s2):
 
     # check if the pattern is greater than the string, if greater then return false
