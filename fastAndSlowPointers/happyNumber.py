@@ -1,19 +1,23 @@
-# def happy(n):
-#     seen = []
-#     while n not in seen:
-#         seen.append(n)
-#         n = sum_of_squares(n)
+def happyNumber(n):
+    slow = n
+    fast = n
+    while True:
+        slow = findSquared(slow)
+        fast = findSquared(findSquared(fast))
+        if fast == slow:
+            break
+    return slow == 1
 
-#         if n == 1:
-#             return True
-#     return False
+
+def findSquared(n):
+    currSum = 0
+    while n > 0:
+        digit = n % 10
+        digit = digit**2
+        currSum += digit
+        n = n//10
+    return currSum
 
 
-# def sum_of_squares(n):
-#     output = 0
-#     while n:
-#         digit = n % 10
-#         digit = digit ** 2
-#         output = output + digit
-#         n = n // 10
-#     return output
+print(happyNumber(12))
+print(happyNumber(23))
