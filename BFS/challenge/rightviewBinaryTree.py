@@ -16,6 +16,7 @@ def treeRightView(root):
         length = len(queue)
         for i in range(length):
             currNode = queue.popleft()
+            # append to result if the curr node is the last level node.
             if i == length - 1:
                 res.append(currNode)
             if currNode.left:
