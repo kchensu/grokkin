@@ -10,20 +10,18 @@ class TreeNode:
 
 def minDepthBinaryTree(root):
     queue = deque()
-    minDepthLength = 0
+    maxDepthLength = 0
     queue.append(root)
     while queue:
-        minDepthLength += 1
+        maxDepthLength += 1
         for _ in range(len(queue)):
             currNode = queue.popleft()
-            if currNode.left is None and currNode.right is None:
-                return minDepthLength
             if currNode.left:
                 queue.append(currNode.left)
             if currNode.right:
                 queue.append(currNode.right)
 
-    return minDepthLength
+    return maxDepthLength
 
 
 def main():
