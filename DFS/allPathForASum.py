@@ -6,22 +6,22 @@ class TreeNode:
 
 
 def findPaths(root, sum):
-    allPaths = []
+    return findPathRecursive(root, sum, [], [])
 
-    def findPathsRecursive(currNode, sum, currPath, allPaths):
-        if currNode is None:
-            return
-        currPath.append(currNode.value)
 
-        if currNode.value == sum:
-            allPaths.append(list(currPath))
-        else:
-            findPathsRecursive(currNode.right, sum -
-                               currNode.value, currPath, allPaths)
-            findPathsRecursive(currNode.left, sum -
-                               currNode.value, currPath, allPaths)
-        del currPath[-1]
-    findPathsRecursive(root, sum, [], allPaths)
+def findPathRecursive(currNode, sum, currPath, allPaths):
+    if currNode is None:
+        return
+    currPath.append(currNode.value)
+    if currNode.value == sum:
+        allPaths.append(list(currPath))
+    else:
+        findPathRecursive(currNode.left, sum -
+                          currNode.value, currPath, allPaths)
+        findPathRecursive(currNode.right, sum -
+                          currNode.value, currPath, allPaths)
+
+    del currPath[-1]
     return allPaths
 
 
