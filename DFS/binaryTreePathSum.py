@@ -11,10 +11,10 @@ def binaryTreePathSum(root, sum):
 
     if root.value == sum and root.left is None and root.right is None:
         return True
+    leftSum = binaryTreePathSum(root.left, sum - root.value)
+    rightSum = binaryTreePathSum(root.left, sum - root.value)
 
-    return binaryTreePathSum(root.left, sum - root.value) or binaryTreePathSum(root.right, sum - root.value)
-
-    return False
+    return leftSum or rightSum
 
 
 def main():
