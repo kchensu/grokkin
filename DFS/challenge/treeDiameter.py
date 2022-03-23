@@ -6,17 +6,18 @@ class TreeNode:
 
 
 def treeDiameter(root):
-    treeDiam = 0
+    treeDiam = [0]
 
-    def treeDiameterRecursive(currNode, treeDiam):
+    def treeDiameterRecursive(currNode):
         if currNode is None:
             return 0
-        leftHeight = treeDiameterRecursive(currNode.left, treeDiam)
-        rightHeight = treeDiameterRecursive(currNode.right, treeDiam)
+        leftHeight = treeDiameterRecursive(currNode.left)
+        rightHeight = treeDiameterRecursive(currNode.right)
         diameter = leftHeight + rightHeight + 1
-        treeDiam = max(treeDiam, diameter)
+        treeDiam[0] = max(treeDiam[0], diameter)
         return max(leftHeight, rightHeight) + 1
-    return treeDiameterRecursive(root, treeDiam)
+    treeDiameterRecursive(root)
+    return treeDiam[0]
 
 
 def main():
