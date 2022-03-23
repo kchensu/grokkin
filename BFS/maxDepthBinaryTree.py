@@ -13,13 +13,13 @@ def minDepthBinaryTree(root):
     maxDepthLength = 0
     queue.append(root)
     while queue:
-        maxDepthLength += 1
         for _ in range(len(queue)):
             currNode = queue.popleft()
             if currNode.left:
                 queue.append(currNode.left)
             if currNode.right:
                 queue.append(currNode.right)
+        maxDepthLength += 1
 
     return maxDepthLength
 
